@@ -1,0 +1,66 @@
+﻿@model LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models.CHI_TIET_DON_HANG
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CHI_TIET_DON_HANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DON_HANG.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DON_HANG.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SAN_PHAM.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SAN_PHAM.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DON_HANG1.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DON_HANG1.TrangThai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaCTDH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

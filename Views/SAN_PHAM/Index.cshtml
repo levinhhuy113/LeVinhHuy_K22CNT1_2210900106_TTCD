@@ -1,0 +1,39 @@
+﻿@model IEnumerable<LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models.SAN_PHAM>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Tạo Mới Sản Phẩm", "Create", new { @class = "btn btn-success btn-lg" })
+</p>
+<link href="~/Content/SanPham.css" rel="stylesheet" />
+
+<div class="row justify-content-center product-grid-style">
+    @foreach (var item in Model)
+    {
+        <div class="product-details">
+            <div class="product-img">
+                @if (!string.IsNullOrEmpty(item.HinhAnh))
+                {
+                    <img src="@Url.Content(item.HinhAnh)" alt="@item.TenSP" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Content/images/default.jpg")" alt="Default Image" />
+                }
+            </div>
+            <div class="product-info">
+                <a href="#!">@item.TenSP</a>
+                <p class="price text-center m-0">
+                    <span class="red line-through me-2">@item.DonGia</span>
+                    <span>@item.DonGia</span>
+                </p>
+                <div class="product-actions">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaSP }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

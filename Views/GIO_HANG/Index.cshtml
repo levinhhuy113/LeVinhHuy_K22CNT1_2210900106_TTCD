@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models.GIO_HANG>
+
+@{
+    ViewBag.Title = "Danh Sách Giỏ Hàng";
+}
+
+<h2>Danh Sách Giỏ Hàng</h2>
+
+<p>
+    @Html.ActionLink("Tạo Giỏ Hàng Mới", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().SoLuong)</th>
+            <th>@Html.DisplayNameFor(model => model.First().NgayThem)</th>
+            <th>@Html.DisplayNameFor(model => model.First().SAN_PHAM.TenSP)</th>
+            <th>@Html.DisplayNameFor(model => model.First().USER.UserName)</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayThem)</td>
+                <td>@Html.DisplayFor(modelItem => item.SAN_PHAM.TenSP)</td>
+                <td>@Html.DisplayFor(modelItem => item.USER.UserName)</td>
+                
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaGioHang }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaGioHang }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaGioHang })
+                </td>
+                <td>
+                    @Html.ActionLink("Thêm số lượng", "AddToCart", "GIO_HANG", new { MaSP = item.MaSP }, new { @class = "btn btn-secondary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

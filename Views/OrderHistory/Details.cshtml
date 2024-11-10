@@ -1,0 +1,46 @@
+﻿@model LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models.DON_HANG
+@{
+    ViewBag.Title = "Chi Tiết Đơn Hàng";
+}
+
+<h2>Chi Tiết Đơn Hàng</h2>
+
+<p>
+    <strong>Mã Đơn Hàng: </strong>@Model.MaDH
+</p>
+<p>
+    <strong>Ngày Đặt: </strong>@Model.Ngay_dat
+</p>
+<p>
+    <strong>Trạng Thái: </strong>@(Model.Trang_thai == 0 ? "Đang xử lý" : "Đã giao")
+</p>
+
+<h3>Chi Tiết Sản Phẩm</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sản Phẩm</th>
+            <th>Hình Ảnh</th>
+            <th>Đơn Giá</th>
+            <th>Số Lượng</th>
+            <th>Thành Tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.DonHangChiTiet)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td><img src="@item.Image" alt="@item.Name" style="width: 100px;" /></td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@item.Total</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <strong>Tổng Tiền: </strong>@Model.Tong_tien
+</p>

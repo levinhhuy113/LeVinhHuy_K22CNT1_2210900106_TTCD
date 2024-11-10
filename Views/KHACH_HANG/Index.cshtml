@@ -12,28 +12,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.HoTen)
+            @Html.DisplayNameFor(model => model.Ho_ten)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            @Html.DisplayNameFor(model => model.Tai_khoan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoDienThoai)
+            @Html.DisplayNameFor(model => model.Mat_khau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dia_chi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dien_thoai)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayDangKy)
+            @Html.DisplayNameFor(model => model.Ngay_sinh)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayTao)
+            @Html.DisplayNameFor(model => model.Ngay_cap_nhat)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayCapNhat)
+            @Html.DisplayNameFor(model => model.Gioi_tinh)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.USER.UserName)
+            @Html.DisplayNameFor(model => model.Trang_thai)
         </th>
         <th></th>
     </tr>
@@ -41,28 +47,34 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
+            @Html.DisplayFor(modelItem => item.Ho_ten)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
+            @Html.DisplayFor(modelItem => item.Tai_khoan)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SoDienThoai)
+            @Html.DisplayFor(modelItem => item.Mat_khau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dia_chi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dien_thoai)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NgayDangKy)
+            @Html.DisplayFor(modelItem => item.Ngay_sinh)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NgayTao)
+            @Html.DisplayFor(modelItem => item.Ngay_cap_nhat)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NgayCapNhat)
+            @Html.DisplayFor(modelItem => item.Gioi_tinh)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.USER.UserName)
+            @Html.DisplayFor(modelItem => item.Trang_thai)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.MaKH }) |

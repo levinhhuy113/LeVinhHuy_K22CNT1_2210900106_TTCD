@@ -14,10 +14,8 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
     
     public partial class QUAN_TRI
     {
-        public int MaQT { get; set; }
-        public string TenDangNhap { get; set; }
-        public string MatKhau { get; set; }
-        public string HoTen { get; set; }
-        public string Email { get; set; }
+        public string Tai_khoan { get; set; }
+        public string Mat_khau { get; set; }
+        public Nullable<byte> Trang_thai { get; set; }
     }
 }

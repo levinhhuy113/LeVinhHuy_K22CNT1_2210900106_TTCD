@@ -1,0 +1,31 @@
+﻿@model LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models.KHACH_HANG
+
+@{
+    ViewBag.Title = "Đăng Nhập";
+}
+
+<h2>Đăng Nhập</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken() <!-- Thêm token chống giả mạo -->
+
+    <div>
+        @Html.LabelFor(model => model.Tai_khoan)
+        @Html.TextBoxFor(model => model.Tai_khoan)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Mat_khau)
+        @Html.PasswordFor(model => model.Mat_khau)
+    </div>
+    <div>
+        <button type="submit">Đăng Nhập</button>
+    </div>
+
+    if (ViewBag.ErrorMessage != null)
+    {
+        <div style="color: red;">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+}

@@ -25,15 +25,6 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
-            bundles.Add(new StyleBundle("~/Content/cssadmin").Include(
-                "~/Content/bootstrap.css",
-              "~/Content/siteAdmin.css"
-             
-              
-    ));
-
-            // Đảm bảo là kích hoạt Minification và Bundling trong chế độ Release
-            BundleTable.EnableOptimizations = true;
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models.DON_HANG>
+
+@{
+    ViewBag.Title = "Lịch sử Đơn Hàng";
+}
+
+<h2>Lịch sử Đơn Hàng</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã Đơn Hàng</th>
+            <th>Ngày Đặt</th>
+            <th>Trạng Thái</th>
+            <th>Tổng Tiền</th>
+            <th>Hành Động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaDH</td>
+                <td>@item.Ngay_dat</td>
+                <td>@(item.Trang_thai == 0 ? "Đang xử lý" : "Đã giao")</td>
+                <td>@item.Tong_tien</td>
+                <td>
+                    @Html.ActionLink("Chi Tiết", "Details", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

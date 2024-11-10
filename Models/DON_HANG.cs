@@ -18,22 +18,20 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
         public DON_HANG()
         {
             this.CHI_TIET_DON_HANG = new HashSet<CHI_TIET_DON_HANG>();
-            this.CHI_TIET_DON_HANG1 = new HashSet<CHI_TIET_DON_HANG>();
         }
     
-        public int MaDH { get; set; }
-        public Nullable<int> MaKH { get; set; }
-        public Nullable<System.DateTime> NgayDat { get; set; }
-        public Nullable<decimal> TongTien { get; set; }
-        public string TrangThai { get; set; }
-        public Nullable<System.DateTime> NgayTao { get; set; }
-        public Nullable<System.DateTime> NgayCapNhat { get; set; }
+        public int ID { get; set; }
+        public string MaDH { get; set; }
+        public int MaKH { get; set; }
+        public string Ten_Nguoi_Nhan { get; set; }
+        public string Dia_Chi_Nhan { get; set; }
+        public string Dien_Thoai_Nhan { get; set; }
+        public System.DateTime Ngay_dat { get; set; }
+        public decimal Tong_tien { get; set; }
+        public byte Trang_thai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHI_TIET_DON_HANG> CHI_TIET_DON_HANG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHI_TIET_DON_HANG> CHI_TIET_DON_HANG1 { get; set; }
         public virtual KHACH_HANG KHACH_HANG { get; set; }
-        public virtual KHACH_HANG KHACH_HANG1 { get; set; }
     }
 }

@@ -14,15 +14,14 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
     
     public partial class CHI_TIET_DON_HANG
     {
-        public int MaCTDH { get; set; }
-        public Nullable<int> MaDH { get; set; }
-        public Nullable<int> MaSP { get; set; }
-        public Nullable<int> SoLuong { get; set; }
-        public Nullable<decimal> DonGia { get; set; }
-        public Nullable<decimal> ThanhTien { get; set; }
+        public int ID { get; set; }
+        public int ID_DH { get; set; }
+        public int ID_SP { get; set; }
+        public int So_Luong { get; set; }
+        public Nullable<double> Don_gia { get; set; }
+        public Nullable<double> Thanh_Tien { get; set; }
     
         public virtual DON_HANG DON_HANG { get; set; }
         public virtual SAN_PHAM SAN_PHAM { get; set; }
-        public virtual DON_HANG DON_HANG1 { get; set; }
     }
 }

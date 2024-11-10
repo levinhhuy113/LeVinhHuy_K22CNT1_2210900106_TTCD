@@ -18,22 +18,16 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
         public SAN_PHAM()
         {
             this.CHI_TIET_DON_HANG = new HashSet<CHI_TIET_DON_HANG>();
-            this.GIO_HANG = new HashSet<GIO_HANG>();
         }
     
-        public int MaSP { get; set; }
-        public string TenSP { get; set; }
-        public string MoTa { get; set; }
-        public decimal DonGia { get; set; }
-        public Nullable<int> SoLuongTon { get; set; }
-        public string DanhMuc { get; set; }
-        public Nullable<System.DateTime> NgayTao { get; set; }
-        public Nullable<System.DateTime> NgayCapNhat { get; set; }
-        public string HinhAnh { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public double Price { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<byte> Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHI_TIET_DON_HANG> CHI_TIET_DON_HANG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GIO_HANG> GIO_HANG { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities : DbContext
+    public partial class LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1 : DbContext
     {
-        public LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities()
-            : base("name=LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities")
+        public LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1()
+            : base("name=LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1")
         {
         }
     
@@ -27,10 +27,8 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
     
         public virtual DbSet<CHI_TIET_DON_HANG> CHI_TIET_DON_HANG { get; set; }
         public virtual DbSet<DON_HANG> DON_HANG { get; set; }
-        public virtual DbSet<GIO_HANG> GIO_HANG { get; set; }
         public virtual DbSet<KHACH_HANG> KHACH_HANG { get; set; }
         public virtual DbSet<QUAN_TRI> QUAN_TRI { get; set; }
         public virtual DbSet<SAN_PHAM> SAN_PHAM { get; set; }
-        public virtual DbSet<USER> USERS { get; set; }
     }
 }

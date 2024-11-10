@@ -3,35 +3,31 @@
 @{
     ViewBag.Title = "Index";
 }
-<p>
-    @Html.ActionLink("Tạo Mới Sản Phẩm", "Create", new { @class = "btn btn-success btn-lg" })
-</p>
 <link href="~/Content/SanPham.css" rel="stylesheet" />
+<h2>Danh Sách Sản Phẩm</h2>
 
-<div class="row justify-content-center product-grid-style">
+<p>
+    @Html.ActionLink("Tạo Mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<!-- Áp dụng kiểu layout cho danh sách sản phẩm -->
+<div class="product-grid-style">
     @foreach (var item in Model)
     {
         <div class="product-details">
             <div class="product-img">
-                @if (!string.IsNullOrEmpty(item.HinhAnh))
-                {
-                    <img src="@Url.Content(item.HinhAnh)" alt="@item.TenSP" />
-                }
-                else
-                {
-                    <img src="@Url.Content("~/Content/images/default.jpg")" alt="Default Image" />
-                }
+                <!-- Hiển thị ảnh sản phẩm -->
+                <img src="@Url.Content("~/Content/images/" + item.Image)" alt="@item.Name" />
             </div>
             <div class="product-info">
-                <a href="#!">@item.TenSP</a>
-                <p class="price text-center m-0">
-                    <span class="red line-through me-2">@item.DonGia</span>
-                    <span>@item.DonGia</span>
-                </p>
-                <div class="product-actions">
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP }, new { @class = "btn btn-primary btn-sm" })
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaSP }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')" })
-                </div>
+                <a href="#">@item.Name</a> <!-- Tên sản phẩm -->
+                <p class="price">@String.Format("{0:C}", item.Price)</p> <!-- Giá sản phẩm -->
+                <p>Số lượng: @item.Quantity</p> <!-- Số lượng sản phẩm -->
+                <p>Trạng thái: @item.Status</p> <!-- Trạng thái sản phẩm -->
+            </div>
+            <div class="product-actions">
+                <a href="/Cart/AddToCart?id=@item.ID&name=@item.Name&image=@item.Image&price=@item.Price&quantity=1" class="btn-mua">Mua</a>
+
             </div>
         </div>
     }

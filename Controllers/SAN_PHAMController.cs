@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -13,7 +12,7 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
 {
     public class SAN_PHAMController : Controller
     {
-        private LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities db = new LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities();
+        private LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1 db = new LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1();
 
         // GET: SAN_PHAM
         public ActionResult Index()
@@ -45,22 +44,12 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
         // POST: SAN_PHAM/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        // POST: SAN_PHAM/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,MoTa,DonGia,SoLuongTon,DanhMuc,NgayTao,NgayCapNhat")] SAN_PHAM sAN_PHAM, HttpPostedFileBase HinhAnh)
+        public ActionResult Create([Bind(Include = "ID,Name,Image,Price,Quantity,Status")] SAN_PHAM sAN_PHAM)
         {
             if (ModelState.IsValid)
             {
-                // Xử lý tải lên hình ảnh
-                if (HinhAnh != null && HinhAnh.ContentLength > 0)
-                {
-                    string fileName = Path.GetFileName(HinhAnh.FileName);
-                    string path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
-                    HinhAnh.SaveAs(path);
-                    sAN_PHAM.HinhAnh = "/Content/images/" + fileName; // Lưu đường dẫn vào cơ sở dữ liệu
-                }
-
                 db.SAN_PHAM.Add(sAN_PHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -68,7 +57,6 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
 
             return View(sAN_PHAM);
         }
-
 
         // GET: SAN_PHAM/Edit/5
         public ActionResult Edit(int? id)
@@ -90,7 +78,7 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,MoTa,DonGia,SoLuongTon,DanhMuc,NgayTao,NgayCapNhat")] SAN_PHAM sAN_PHAM)
+        public ActionResult Edit([Bind(Include = "ID,Name,Image,Price,Quantity,Status")] SAN_PHAM sAN_PHAM)
         {
             if (ModelState.IsValid)
             {

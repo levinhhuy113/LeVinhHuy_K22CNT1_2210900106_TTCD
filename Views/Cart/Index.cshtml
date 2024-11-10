@@ -1,0 +1,82 @@
+﻿@model LEVINHHUY_K22CNT1_2210900106_PROJECT2.Bussiness.ShoppingCart
+@{
+    ViewBag.Title = "Giỏ hàng";
+}
+@using (Html.BeginForm("UpdateFromCart", "Cart", FormMethod.Post))
+{
+    <h2>Giỏ hàng</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mã</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình ảnh</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+            <tr>
+                <!-- Sử dụng name duy nhất cho mỗi sản phẩm -->
+                <input type="hidden" name="Items[@item.Id].Id" value="@item.Id" />
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <!-- Hiển thị hình ảnh sản phẩm -->
+                    <img src="@Url.Content("~/Content/images/" + item.Image)" alt="@item.Name" width="50" height="50" />
+                </td>
+
+                <td>@item.Price.ToString("C")</td>
+                <td>
+                    <input type="number" value="@item.Quantity" name="Items[@item.Id].Quantity" data-id="@item.Id" min="1" />
+                </td>
+                <td>@item.Total.ToString("C")</td>
+                <td>
+                    <a href="/Cart/UpdateItemCart?id=@item.Id&quantity=@item.Quantity" class="btn btn-outline-success update">Cập nhật</a>
+                    <a href="/Cart/DeleteItemCart?id=@item.Id" class="btn btn-outline-danger">Xóa</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Tổng tiền: @Model.GetTotal().ToString("C")</h3>
+
+    <a href="Cart/ThongTinThanhToan" class="btn btn-primary">Thanh Toán</a>
+    <button type="submit" class="btn btn-outline-primary mx-2">Cập nhật giỏ hàng</button>
+}
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("input[type='number']").change(function () {
+                let id = $(this).attr("data-id");
+                let quantity = $(this).val();
+                // Tạo link update
+                let url = "/Cart/UpdateItemCart?id=" + id + "&quantity=" + quantity;
+                // Tìm và cập nhật href của nút "Cập nhật" tương ứng trong cùng hàng
+                $(this).closest("tr").find("a.update").attr('href', url);
+                // Cập nhật lại thành tiền của sản phẩm trong hàng
+                let price = parseFloat($(this).closest("tr").find("td:nth-child(4)").text().replace('$', '').trim());
+                let total = price * quantity;
+                $(this).closest("tr").find("td:nth-child(6)").text(total.toFixed(2));
+                // Cập nhật lại tổng tiền của giỏ hàng
+                updateTotal();
+            });
+
+            function updateTotal() {
+                let total = 0;
+                $("tbody tr").each(function () {
+                    let rowTotal = parseFloat($(this).find("td:nth-child(6)").text().replace('$', '').trim());
+                    total += rowTotal;
+                });
+                $("h3").text("Tổng tiền: " + total.toFixed(2));
+            }
+        });
+    </script>
+}

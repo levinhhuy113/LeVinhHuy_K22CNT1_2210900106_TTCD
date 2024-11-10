@@ -18,23 +18,21 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Models
         public KHACH_HANG()
         {
             this.DON_HANG = new HashSet<DON_HANG>();
-            this.DON_HANG1 = new HashSet<DON_HANG>();
         }
     
         public int MaKH { get; set; }
-        public string HoTen { get; set; }
-        public string DiaChi { get; set; }
-        public string SoDienThoai { get; set; }
+        public string Ho_ten { get; set; }
+        public string Tai_khoan { get; set; }
+        public string Mat_khau { get; set; }
+        public string Dia_chi { get; set; }
+        public string Dien_thoai { get; set; }
         public string Email { get; set; }
-        public Nullable<System.DateTime> NgayDangKy { get; set; }
-        public Nullable<System.DateTime> NgayTao { get; set; }
-        public Nullable<System.DateTime> NgayCapNhat { get; set; }
-        public Nullable<int> UserId { get; set; }
+        public Nullable<System.DateTime> Ngay_sinh { get; set; }
+        public Nullable<System.DateTime> Ngay_cap_nhat { get; set; }
+        public Nullable<byte> Gioi_tinh { get; set; }
+        public Nullable<byte> Trang_thai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DON_HANG> DON_HANG { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DON_HANG> DON_HANG1 { get; set; }
-        public virtual USER USER { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }

@@ -12,14 +12,19 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
 {
     public class KHACH_HANGController : Controller
     {
-        private LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities db = new LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities();
+        private LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1 db = new LEVINHHUY_K22CNT1_2210900106_PROJECT2Entities1();
 
         // GET: KHACH_HANG
         public ActionResult Index()
         {
-            var kHACH_HANG = db.KHACH_HANG.Include(k => k.USER);
-            return View(kHACH_HANG.ToList());
+            if (Session["KhachHang"] == null)
+            {
+                return RedirectToAction("Login"); // Nếu chưa đăng nhập, chuyển hướng tới trang đăng nhập
+            }
+
+            return View(db.KHACH_HANG.ToList());
         }
+
 
         // GET: KHACH_HANG/Details/5
         public ActionResult Details(int? id)
@@ -39,7 +44,6 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
         // GET: KHACH_HANG/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.USERS, "UserId", "UserName");
             return View();
         }
 
@@ -48,7 +52,7 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,HoTen,DiaChi,SoDienThoai,Email,NgayDangKy,NgayTao,NgayCapNhat,UserId")] KHACH_HANG kHACH_HANG)
+        public ActionResult Create([Bind(Include = "MaKH,Ho_ten,Tai_khoan,Mat_khau,Dia_chi,Dien_thoai,Email,Ngay_sinh,Ngay_cap_nhat,Gioi_tinh,Trang_thai")] KHACH_HANG kHACH_HANG)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +61,6 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.USERS, "UserId", "UserName", kHACH_HANG.UserId);
             return View(kHACH_HANG);
         }
 
@@ -73,7 +76,6 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.USERS, "UserId", "UserName", kHACH_HANG.UserId);
             return View(kHACH_HANG);
         }
 
@@ -82,7 +84,7 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,HoTen,DiaChi,SoDienThoai,Email,NgayDangKy,NgayTao,NgayCapNhat,UserId")] KHACH_HANG kHACH_HANG)
+        public ActionResult Edit([Bind(Include = "MaKH,Ho_ten,Tai_khoan,Mat_khau,Dia_chi,Dien_thoai,Email,Ngay_sinh,Ngay_cap_nhat,Gioi_tinh,Trang_thai")] KHACH_HANG kHACH_HANG)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +92,6 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.USERS, "UserId", "UserName", kHACH_HANG.UserId);
             return View(kHACH_HANG);
         }
 
@@ -128,5 +129,50 @@ namespace LEVINHHUY_K22CNT1_2210900106_PROJECT2.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        // GET: KHACH_HANG/Login
+        public ActionResult Login()
+        {
+
+            return View();
+        }
+
+        // POST: KHACH_HANG/Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string Tai_khoan, string Mat_khau)
+        {
+            // Giả sử mật khẩu đã được mã hóa
+            var khachHang = db.KHACH_HANG.SingleOrDefault(k => k.Tai_khoan == Tai_khoan && k.Mat_khau == Mat_khau);
+
+            if (khachHang != null)
+            {
+                // Đăng nhập thành công, lưu thông tin người dùng vào session
+                Session["KhachHang"] = khachHang;
+                return RedirectToAction("Index"); // Hoặc chuyển hướng tới trang khác
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Tài khoản hoặc mật khẩu không đúng!";
+                return View();
+            }
+        }
+
+
+
+        // GET: KHACH_HANG/Logout
+        // GET: KHACH_HANG/Logout
+        public ActionResult Logout()
+        {
+            // Xóa session
+            Session["KhachHang"] = null;
+
+            // Chuyển hướng đến trang đăng nhập
+            return RedirectToAction("Login");
+        }
+
+
+
     }
 }

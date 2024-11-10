@@ -1,0 +1,125 @@
+﻿/* Reset một số thuộc tính mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Jumbotron */
+.jumbotron {
+    background-color: #343a40;
+    color: #fff;
+    padding: 60px 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+    .jumbotron .display-4 {
+        font-size: 2.5em;
+        font-weight: bold;
+    }
+
+    .jumbotron p.lead {
+        font-size: 1.2em;
+        margin: 20px 0;
+    }
+
+    .jumbotron .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        transition: background-color 0.3s;
+    }
+
+        .jumbotron .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+/* Card sản phẩm */
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #ddd;
+    }
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5em;
+    color: #333;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.card .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+    .card .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Phần tại sao chọn chúng tôi */
+.container.mt-5.text-center h2 {
+    font-size: 2em;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.container .row .col-md-4 {
+    padding: 20px;
+}
+
+.container .row h4 {
+    font-size: 1.3em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.container .row p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 5px solid #007bff;
+    font-size: 0.9em;
+}
